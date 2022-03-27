@@ -22,27 +22,35 @@ function playRound(playerSelection, computerSelection) {
 
 // function for the full game
 function game() {
+    //player score
     let p = 0
+    //computer score
     let c = 0
     for (let i = 0; i < 5; i++) {
         // playerSelection initialization
         let playerSelection = window.prompt("Rock, Paper, or Scissors").toLowerCase();
         // computerSelection initialization
         let computerSelection = computerPlay();
+        // actual game start
         if (playRound(playerSelection, computerSelection) === "Tie") {
+            // on tie, decrements counter
             console.log("Your score: " + p.toString() + "\nThe Computer: " + c.toString())
             i--
         } else if (playRound(playerSelection, computerSelection) === "Lose") {
+            // on lose, increments computer score
             c++
             console.log("Your score: " + p.toString() + "\nThe Computer: " + c.toString())
         } else if (playRound(playerSelection, computerSelection) === "Win") {
+            //on win, increments player score
             p++
             console.log("Your score: " + p.toString() + "\nThe Computer: " + c.toString())
         } else {
+            //error or typo in player selection catch
             i--
             console.log("Error in your selection, please try again")
         }
     }
+    //results
     if (p > c) {
         console.log("Congratulations! You win!")
     } else {
